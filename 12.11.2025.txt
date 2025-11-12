@@ -1,0 +1,248 @@
+buttons
+<script setup lang="ts">
+const isActive = ref(true);
+const toggle = () => {
+  isActive.value = !isActive.value;
+}; "@click"toggle">
+Przycisk{{isActive ? 'Prawda' : 'Fałsz'}}
+</button>
+<br/>
+<TestDiv v-show="isActive"/>
+</script>
+
+<template></template>
+<style scoped>
+.bg-green-600 {
+    background-color: green;
+}
+
+
+app2
+<template>
+  <div>Test 2</div>
+</template>
+
+app1
+<template>
+  <div>
+    <h1>Lista Postów</h1>
+    <ul>
+      <!-- Wyświetlanie postów -->
+      <li v-for="post in posts" :key="post.id">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+      </li>
+    </ul>
+
+    <!-- Komunikat o błędzie -->
+    <div v-if="error" style="color: red">
+      <p>Wystąpił błąd podczas pobierania danych!</p>
+    </div>
+
+    <!-- Komunikat o ładowaniu -->
+    <div v-if="loading">
+      <p>Ładowanie...</p>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      posts: [], // Tablica na posty
+      loading: false, // Flaga ładowania
+      error: false, // Flaga błędu
+    };
+  },
+  mounted() {
+    this.fetchPosts(); // Wywołanie funkcji przy załadowaniu komponentu
+  },
+  methods: {
+    // Funkcja pobierająca dane z API
+    async fetchPosts() {
+      this.loading = true;
+      this.error = false;
+
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts",
+        );
+        this.posts = response.data; // Zapisujemy odpowiedź do zmiennej posts
+      } catch (err) {
+        this.error = true; // W przypadku błędu ustawiamy flagę błędu
+      } finally {
+        this.loading = false; // Ustawiamy flagę ładowania na false po zakończeniu zapytania
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Prosta stylizacja komponentu */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+}
+</style>
+
+math
+<script setup lang-"ts">
+import { ref } from 'vue'
+
+const count =ref(0)
+const message =ref('Witaj')
+
+const add = () => {
+    count.value++
+}
+
+console.log()
+fetch
+<style scoped>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title{
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+}
+
+.error {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.data-container {
+    display: grid;
+    gap:20px;
+}
+
+.post-card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #4caf50;
+    transition: transform 0.2s, box-shadow 0,2s;
+}
+
+.post-card:hover {
+    transform: translatev(-2px)
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.post-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.post-body {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.post-id {
+    font-size: 0.85rem
+    color: #999;
+    font-size: italic;
+}
+moja strona
+<!-- src/App.vue -->
+<template>
+  <div id="app">
+    <header>
+      <h1>Moja Strona w Vue</h1>
+      <nav>
+        <ul>
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/about">About</router-link></li>
+          <li><router-link to="/contact">Contact</router-link></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <router-view></router-view>
+    </main>
+    <footer>
+      <p>&copy; 2025 Moja Strona</p>
+    </footer>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+};
+</script>
+
+<style scoped>
+#app {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+main {
+  margin-top: 20px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+</style>
